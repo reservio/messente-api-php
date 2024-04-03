@@ -289,7 +289,7 @@ class ErrorItemNumberLookupError implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -301,7 +301,7 @@ class ErrorItemNumberLookupError implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return mixed|null
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->container[$offset] ?? null;
     }
@@ -314,7 +314,7 @@ class ErrorItemNumberLookupError implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -330,7 +330,7 @@ class ErrorItemNumberLookupError implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->container[$offset]);
     }
@@ -342,7 +342,7 @@ class ErrorItemNumberLookupError implements ModelInterface, ArrayAccess, \JsonSe
      * @return mixed Returns data which can be serialized by json_encode(), which is a value
      * of any type other than a resource.
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
        return ObjectSerializer::sanitizeForSerialization($this);
     }
@@ -352,7 +352,7 @@ class ErrorItemNumberLookupError implements ModelInterface, ArrayAccess, \JsonSe
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return json_encode(
             ObjectSerializer::sanitizeForSerialization($this),
